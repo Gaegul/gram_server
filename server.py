@@ -1,4 +1,4 @@
-from flask import Flask, request,jsonify
+from flask import Flask, request,json
 from datetime import datetime
 
 app = Flask(__name__)
@@ -21,7 +21,7 @@ def post_rank():
 def view_rank():
     real_rank = sorted(rank, key=lambda item: item['time'])
 
-    return jsonify([{
+    return json.dumps([{
         'name': data['name'],
         'time': str(data['time'])
     } for data in real_rank]), 200
